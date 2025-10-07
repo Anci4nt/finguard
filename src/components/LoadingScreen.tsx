@@ -8,7 +8,7 @@ const LoadingScreen: React.FC = () => {
           <div className="w-14 h-14 rounded-full bg-gradient-to-r from-blue-600 to-purple-600 animate-pulse" />
           <div className="absolute inset-0 blur-xl opacity-40 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full" />
         </div>
-        <div className="text-sm text-muted-foreground">Loading your FinanceWise experience…</div>
+        <div className="text-sm text-muted-foreground">Loading your FinGuard experience…</div>
       </div>
     </div>
   );

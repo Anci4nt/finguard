@@ -6,8 +6,6 @@ import {
   Target, 
   PieChart, 
   Wallet, 
-  Moon,
-  Sun,
   Bell,
   User
 } from 'lucide-react';
@@ -25,7 +23,6 @@ const FinanceAppContent = () => {
   const { dispatch } = useFinance();
   const { user, logout } = useAuth();
   const [activeTab, setActiveTab] = useState('dashboard');
-  const [isDarkMode, setIsDarkMode] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -35,21 +32,16 @@ const FinanceAppContent = () => {
     return () => clearTimeout(timeout);
   }, []);
 
-  const toggleDarkMode = () => {
-    setIsDarkMode(!isDarkMode);
-    document.documentElement.classList.toggle('dark');
-  };
+  
 
   if (isLoading) {
     return <LoadingScreen />;
   }
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      isDarkMode ? 'dark bg-gray-900' : 'bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50'
-    }`}>
+    <div className={`min-h-screen transition-colors duration-300 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50`}>
       {/* Header */}
-      <header className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
+      <header className="bg-white/80 backdrop-blur-md border-b border-gray-200 sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center space-x-4">
@@ -58,21 +50,12 @@ const FinanceAppContent = () => {
                   <Wallet className="w-5 h-5 text-white" />
                 </div>
                 <span className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-                  FinanceWise
+                  FinGuard
                 </span>
               </div>
             </div>
             
             <div className="flex items-center space-x-4">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={toggleDarkMode}
-                className="hover:bg-gray-100 dark:hover:bg-gray-800"
-              >
-                {isDarkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-              </Button>
-
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <Button variant="ghost" size="icon">
@@ -94,10 +77,10 @@ const FinanceAppContent = () => {
       </header>
 
       {/* Navigation */}
-      <nav className="bg-white/80 dark:bg-gray-900/80 backdrop-blur-md border-b border-gray-200 dark:border-gray-700">
+      <nav className="bg-white/80 backdrop-blur-md border-b border-gray-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-            <TabsList className="grid w-full grid-cols-3 bg-gray-100 dark:bg-gray-800">
+            <TabsList className="grid w-full grid-cols-3 bg-gray-100">
               <TabsTrigger value="dashboard" className="flex items-center space-x-2">
                 <PieChart className="w-4 h-4" />
                 <span className="hidden sm:inline">Dashboard</span>
